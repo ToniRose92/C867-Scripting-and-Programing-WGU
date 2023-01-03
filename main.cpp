@@ -17,8 +17,8 @@ using namespace std;
 
 int main() {
     //A.  Modify the “studentData Table” to include your personal information as the last item.
-    const int studentTotal = 5;
-    const string studentData[5] = {
+    //const int studentTotal = 5;
+    const string studentData[] = {
         "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
         "A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
         "A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
@@ -32,12 +32,12 @@ int main() {
     cout << "Programmer: Melodee Stewart" << endl << endl;
       
     //2.  Create an instance of the Roster class called classRoster.
-    Roster* classRoster = new Roster(studentTotal);
+    Roster* classRoster;
     
     //3.  Add each student to classRoster.
-    for (int i = 0; i <= studentTotal; i++) {
-        classRoster->parseArray(studentData[i]);
-    }
+//     for (int i = 0; i <= studentTotal; i++) {
+//         classRoster->parseArray(studentData[i]);
+//     }
     
     //4.  Convert the following pseudo code to complete the rest of the  main() function:
 
