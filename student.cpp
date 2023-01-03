@@ -83,6 +83,12 @@ void Student::printHeader(){
 }
 
 void Student::print(){
+    std::string degreeProgram = "";
+    if (GetDegreeProgram() == 0) {degreeProgram = "UNDECLARED";}
+    else if (GetDegreeProgram() == 1) {degreeProgram = "SECURITY";}
+    else if (GetDegreeProgram() == 2) {degreeProgram = "NETWORK";}
+    else if (GetDegreeProgram() == 3) {degreeProgram = "SOFTWARE";}
+    
     cout << this->studentID << " |" << '\t';
     cout << this->firstName << " |" << '\t';
     cout << this->lastName << " |" << '\t';
@@ -91,5 +97,6 @@ void Student::print(){
     cout << this->courseDays[0] << " |" << '\t';
     cout << this->courseDays[1] << " |" << '\t';
     cout << this->courseDays[2] << " |" << '\t';
-    cout << this->degreeProgramString[(int)this->degreeProgram] << " |" << '\t' << endl;
+    cout << degreeProgram << " |" << '\t' << endl;
+}
 }
