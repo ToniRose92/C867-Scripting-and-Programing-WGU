@@ -39,12 +39,12 @@ public:
     DegreeProgram GetDegreeProgram();
     
     //a mutator (i.e., setter) for each instance variable from part D1
-    void SetStudentID(std::string studentID);
-    void SetFirstName(std::string firstName);
-    void SetLastName(std::string lastName);
-    void SetEmailAddress(std::string emailAddress);
-    void SetAge(int age);
-    void SetCourseDays(const int courseDays[]);
+    void SetStudentID(std::string newStudentID);
+    void SetFirstName(std::string newFirstName);
+    void SetLastName(std::string newLastName);
+    void SetEmailAddress(std::string newEmailAddress);
+    void SetAge(int newAge);
+    void SetCourseDays(const int newCourseDays[]);
     void SetDegreeProgram(DegreeProgram degreeProgram);
     
     //print() to print specific student data
@@ -60,7 +60,6 @@ private:
     int age;
     int courseDays[daysArray];
     DegreeProgram degreeProgram;
-    
 };
 
 #endif /* student_h */
