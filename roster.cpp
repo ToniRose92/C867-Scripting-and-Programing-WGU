@@ -83,16 +83,19 @@ void Roster::printAll() {
     /*Header for each student*/
     Student::printHeader();
     for (int i = 0; i <= Roster::studentIndex; i++) {
-         classRosterArray[i]->print();
+         if (classRosterArray[i] == nullptr){}
+        else { classRosterArray[i]->print();
         }
+    }
 };
 //e.  public void printInvalidEmails()
 void Roster::printInvalidEmails() {
+    cout << "Invalid email address, please check for missing '@' and '.' or spaces : " << endl;
     bool ALL = false;
     /*checks each email against '@',' ','.'*/
     for (int i = 0; i <= Roster::studentIndex; i++) {
         string emailAddress = (classRosterArray[i]->GetEmailAddress());
-        if (emailAddress.find('@') == string::npos || (emailAddress.find(' ') == string::npos && emailAddress.find('.') == string::npos)) {
+        if (emailAddress.find('@') != string::npos || (emailAddress.find(' ') != string::npos && emailAddress.find('.') != string::npos)) {
             ALL = true;
             /*prints each email*/
             cout << emailAddress << endl;
