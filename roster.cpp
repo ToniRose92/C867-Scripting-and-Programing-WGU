@@ -53,7 +53,7 @@ void Roster::parseArray(const std::string studentData[]){
     if (splitter.at(degreeProgram).back() == 'Y') degreeProgram = DegreeProgram::SECURITY;
     if (splitter.at(degreeProgram).back() == 'K') degreeProgram = DegreeProgram::NETWORK;
     if (splitter.at(degreeProgram).back() == 'E') degreeProgram = DegreeProgram::SOFTWARE;
-    add(splitter.at(0), splitter.at(1), splitter.at(2), splitter.at(3), stod(splitter.at(4)), stod(splitter.at(5)), stod(splitter.at(6)), stod(splitter.at(7)), degreeProgram);
+    add(splitter.at(0), splitter.at(1), splitter.at(2), splitter.at(3), stoi(splitter.at(4)), stoi(splitter.at(5)), stoi(splitter.at(6)), stoi(splitter.at(7)), degreeProgram);
 };
 
 //a.  public void add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeprogram)
@@ -69,14 +69,14 @@ void Roster::add(std::string studentID,
     
     int courseDays[Student::daysArray]{courseDays1, courseDays2, courseDays3};
     
-//    classRosterArray[totalStudents] = new Student(studentID, firstName, lastName, emailAddress, age, courseDays, degreeProgram); //can't get the classRosterArray[++totalStudents] to work properly
+    classRosterArray[++studentIndex] = new Student(studentID, firstName, lastName, emailAddress, age, courseDays, degreeProgram);
     
-    for (int i = 0; i <= Roster::studentIndex; i++) {
-        if (classRosterArray[i] == nullptr) {
-            classRosterArray[i] = new Student(studentID, firstName, lastName, emailAddress, age, courseDays, degreeProgram);
-            break;
-        }
-    }
+//     for (int i = 0; i <= Roster::studentIndex; i++) {
+//         if (classRosterArray[i] == nullptr) {
+//             classRosterArray[i] = new Student(studentID, firstName, lastName, emailAddress, age, courseDays, degreeProgram);
+//             break;
+//         }
+//     }
 };
 //c. public void printAll() that prints a complete tab-separated list of student data
 void Roster::printAll() {
