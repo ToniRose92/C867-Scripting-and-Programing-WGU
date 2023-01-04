@@ -143,3 +143,94 @@ void Roster::removeStudent(string studentID) {
     }
     else cout << studentID << " not found in roster." << endl << endl;
 };
+
+
+/* 2 OTHER PARSING OPTIONS */
+/*
+void Roster::parseArray(const std::string studentData[]) {
+
+    size_t rhs = studentData->find(",");
+    string studentID = studentData->substr(0, rhs);
+
+    size_t lhs = rhs + 1;
+    rhs = studentData->find(",", lhs);
+    string firstName = studentData->substr(lhs, rhs - lhs);
+
+    lhs = rhs + 1;
+    rhs = studentData->find(",", lhs);
+    string lastName = studentData->substr(lhs, rhs - lhs);
+
+    lhs = rhs + 1;
+    rhs = studentData->find(",", lhs);
+    string emailAddress = studentData->substr(lhs, rhs - lhs);
+
+    lhs = rhs + 1;
+    rhs = studentData->find(",", lhs);
+    int age = stoi(studentData->substr(lhs, rhs - lhs));
+
+    lhs = rhs + 1;
+    rhs = studentData->find(",", lhs);
+    int daysInCourse1 = stoi(studentData->substr(lhs, rhs - lhs));
+
+    lhs = rhs + 1;
+    rhs = studentData->find(",", lhs);
+    int daysInCourse2 = stoi(studentData->substr(lhs, rhs - lhs));
+
+    lhs = rhs + 1;
+    rhs = studentData->find(",", lhs);
+    int daysInCourse3 = stoi(studentData->substr(lhs, rhs - lhs));
+
+    lhs = rhs + 1;
+    rhs = studentData->find(",", lhs);
+    DegreeProgram degreeProgram;
+    if (studentData->substr(lhs, rhs - lhs) == "SECURITY") {
+        degreeProgram = DegreeProgram::SECURITY;
+    }
+    else if (studentData->substr(lhs, rhs - lhs) == "NETWORK") {
+        degreeProgram = DegreeProgram::NETWORK;
+    }
+    else if (studentData->substr(lhs, rhs - lhs) == "SOFTWARE") {
+        degreeProgram = DegreeProgram::SOFTWARE;
+    }
+
+        this->add(studentID, firstName, lastName, emailAddress, age, daysInCourse1, daysInCourse2, daysInCourse3, degreeProgram);
+    }
+*/
+/*
+void Roster::parseArray(const std::string studentData[]) {
+    int age; int daysInCourse1; int daysInCourse2; int daysInCourse3;
+    string studentID; string firstName; string lastName; string emailAddress;
+    DegreeProgram degreeProgram;
+    
+    string stringArray[9];
+    string cell;
+    
+    for (int index = 0; index < 5; index++) {
+        
+        int index2 = 0;  // reset
+        
+        string lineString = studentData[index];
+        istringstream ss(lineString);
+        
+        while (getline(ss, cell, ',')) {
+            stringArray[index2] = cell;
+            index2++;
+        }
+        DegreeProgram degreeProgram = DegreeProgram::UNDECLARED;
+        if (stringArray[8] == "SOFTWARE") {
+            degreeProgram = DegreeProgram::SOFTWARE;
+        }
+        if (stringArray[8] == "NETWORK") {
+            degreeProgram = DegreeProgram::NETWORK;
+        }
+        if (stringArray[8] == "SECURITY") {
+            degreeProgram = DegreeProgram::SECURITY;
+        }
+        // now call add() function
+        
+        add(stringArray[0], stringArray[1], stringArray[2], stringArray[3],
+                        std::stoi(stringArray[4]), std::stoi(stringArray[5]), std::stoi(stringArray[6]),
+                        std::stoi(stringArray[7]), degreeProgram);
+    }
+}
+*/
