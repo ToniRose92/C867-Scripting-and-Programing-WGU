@@ -7,58 +7,61 @@
 /*
  E.  Create a Roster class (roster.cpp) by doing the following:
  */
-
 #ifndef roster_h
 #define roster_h
 #include <stdio.h>
+#include <vector>
+#include <cstring>
+#include <string.h>
+#include <sstream>
 #include <string>
 #include "student.h"
 
+using std::string;
+using std::cout;
+using std::endl;
 using namespace std;
 
 class Roster{
 public:
     //Constructors
     Roster();
-    Student** getStudents();
+    
     //Destructor
     ~Roster();
     
-    //Uses the data from studentData and adds it to the classRoster as an object
-    //void parseArray(std::string studentData);
+    Student** getStudent();
     
-    //2.  Create a student object for each student in the data table and populate classRosterArray.
+    //Uses the data from studentData and adds it to the classRoster as an object
+    void parseArray(const std::string studentData[]);
+    
     //a.  public void add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeprogram)  that sets the instance variables from part D1 and updates the roster.
     void add(std::string studentID,
-                    std::string firstName,
-                    std::string lastName,
-                    std::string emailAddress,
-                    int age,
-                    int daysInCourse1,
-                    int daysInCourse2,
-                    int daysInCourse3,
-                    DegreeProgram degreeProgram);
-    //c. public void printAll() that prints a complete tab-separated list of student data.
+            std::string firstName,
+            std::string lastName,
+            std::string emailAddress,
+            int age,
+            int courseDays1,
+            int courseDays2,
+            int courseDays3,
+            DegreeProgram degreeProgram);
+    //c. public void printAll()
     void printAll();
-    
-    //b.  public void remove(string studentID)  that removes students from the roster by student ID.
+    //d.  public void printAverageDaysInCourse(string studentID)
+    void printAverageDaysInCourse(std::string studentID);
+    //e.  public void printInvalidEmails()
+    void printInvalidEmails();
+    //f.  public void printByDegreeProgram(DegreeProgram degreeProgram) 
+    void printByDegreeProgram(DegreeProgram degreeProgram);
+    //b.  public void remove(string studentID)
     void removeStudent(string studentID);
     
-    //d.  public void printAverageDaysInCourse(string studentID)  that correctly prints a student’s average number of days in the three courses. The student is identified by the studentID parameter.
-    void printAverageDaysInCourse(std::string studentID);
-    
-    //e.  public void printInvalidEmails() that verifies student email addresses and displays all invalid email addresses to the user.
-    void printInvalidEmails();
-    
-    //f.  public void printByDegreeProgram(DegreeProgram degreeProgram) that prints out student information for a degree program specified by an enumerated type.
-    void printByDegreeProgram(DegreeProgram degreeProgram);
-    
+    //2.  Create a student object for each student in the data table and populate classRosterArray.
     const static int totalStudents = 5;
-    //1.  Create an array of pointers, classRosterArray, to hold the data provided in the “studentData Table.”
-    //Student** classRosterArray[totalStudentCount];
-    Student* classRosterArray[totalStudents] { NULL};
-
- private:
+    Student* classRosterArray[totalStudents] = { nullptr, nullptr, nullptr, nullptr, nullptr };
+private:
     int studentIndex = -1;
+    //1.  Create an array of pointers, classRosterArray, to hold the data provided in the “studentData Table.”
+    
 };
 #endif /* roster_h */
