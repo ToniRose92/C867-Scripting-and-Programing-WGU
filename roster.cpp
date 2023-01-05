@@ -47,8 +47,10 @@ Student** Roster::getStudent(){
 //Parsing using regular expresions.
 void Roster::parseArray(const std::string studentData[]){
     regex regex("\\,");
-    std::vector<string> splitter(
-                                 std::sregex_token_iterator(studentData->begin(), studentData->end(), regex, -1), std::sregex_token_iterator());
+    for (int i = 0; i < 5; i++) {
+        string tempString = studentData[i];
+        std::vector<string> splitter(
+                                     std::sregex_token_iterator(tempString.begin(), tempString.end(), regex, -1), std::sregex_token_iterator());
     DegreeProgram degreeProgram = DegreeProgram::UNDECLARED;
     if (splitter.at(degreeProgram).back() == 'Y') degreeProgram = DegreeProgram::SECURITY;
     if (splitter.at(degreeProgram).back() == 'K') degreeProgram = DegreeProgram::NETWORK;
