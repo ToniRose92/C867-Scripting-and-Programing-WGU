@@ -86,20 +86,18 @@ void Roster::printAll() {
 };
 //e.  public void printInvalidEmails()
 void Roster::printInvalidEmails() {
-    cout << "Invalid email address, please check for missing '@' and '.' or spaces : " << endl;
-    bool ALL = false;
-    /*checks each email against '@',' ','.'*/
-    for (int i = 0; i <= Roster::studentIndex; i++) {
-        std::string emailAddress = (classRosterArray[i]->GetEmailAddress());
-        if (emailAddress.find('@') != string::npos || (emailAddress.find(' ') != string::npos || emailAddress.find('.') != string::npos)) {
-            ALL = true;
-            /*prints each email*/
-            cout << emailAddress << endl;
+    cout << endl << "Invalid email address(s), please check for missing '@' and '.' or spaces : " << endl << endl;
+        for (int i = 0; i < totalStudents; i++) {
+            if ( (classRosterArray[i]->GetEmailAddress()).find('@') == -1) {
+                cout << classRosterArray[i]->GetEmailAddress() << endl;
+            }
+            else if ( (classRosterArray[i]->GetEmailAddress()).find('.') == -1) {
+                cout << classRosterArray[i]->GetEmailAddress() << endl;
+            }
+            else if ( (classRosterArray[i]->GetEmailAddress()).find(' ') != -1) {
+                cout << classRosterArray[i]->GetEmailAddress() << endl;
+            }
         }
-        else if (!ALL) {
-            cout << "All email addresses are valid" << endl << endl;
-        }
-    }
 };
 //d.  public void printAverageDaysInCourse(string studentID)  that correctly prints a student’s average number of days in the three courses. The student is identified by the studentID parameter.
 void Roster::printAverageDaysInCourse(string studentID) {
