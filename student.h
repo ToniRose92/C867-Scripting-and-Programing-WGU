@@ -12,6 +12,10 @@
 #include "degree.h"
 #include <string>
 
+using std::string;
+using std::cout;
+using std::endl;
+using std::left;
 using namespace std;
 
 class Student {
@@ -39,16 +43,16 @@ public:
     DegreeProgram GetDegreeProgram();
     
     //a mutator (i.e., setter) for each instance variable from part D1
-    void SetStudentID(std::string newStudentID);
-    void SetFirstName(std::string newFirstName);
-    void SetLastName(std::string newLastName);
-    void SetEmailAddress(std::string newEmailAddress);
-    void SetAge(int newAge);
-    void SetCourseDays(const int newCourseDays[]);
-    void SetDegreeProgram(DegreeProgram degreeProgram);
+    void SetStudentID(std::string studentID);
+    void SetFirstName(std::string firstName);
+    void SetLastName(std::string lastName);
+    void SetEmailAddress(std::string emailAddress);
+    void SetAge(int age);
+    void SetCourseDays(const int courseDays[]);
+    void SetDegreeProgram(DegreeProgram dProgram);
     
     //print() to print specific student data
-    static void printHeader();//to clearly lable the categories when printing.
+    //static void printHeader();//to clearly lable the categories when printing.
     void print();
     
     //Create the class Student  in the files student.h and student.cpp
