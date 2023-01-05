@@ -41,18 +41,23 @@ int main() {
     cout << endl;
     
     classRoster.printAll();
+    cout << endl;
     
     classRoster.printInvalidEmails();
+    cout << endl;
     
     //loop through
     cout << "Average days in a course (each student): " << endl;
     for (int i = 0; i < totalStudents; i++) classRoster.printAverageDaysInCourse(classRoster.getStudent()[i]->GetStudentID());
+    cout << endl;
     
     cout << "Software Degrees: " << endl;
     classRoster.printByDegreeProgram(DegreeProgram::SOFTWARE);
+    cout << endl;
     
     cout << "Removing student A3" << endl;
     classRoster.removeStudent("A3");
+    cout << endl;
     
     cout << "All students: " << endl;
     classRoster.printAll();
@@ -60,7 +65,7 @@ int main() {
     //expected: the above line should print a message saying such a student with this ID was not found.
     
     //5.  Implement the destructor to release the memory that was allocated dynamically in Roster.
-    
+    cout << endl;
     char exitSign = 'a';
         while (exitSign != 'q') {
 
