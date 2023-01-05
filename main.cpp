@@ -9,7 +9,6 @@
  */
 #include <stdio.h>
 #include <iostream>
-#include <iomanip>
 #include <string>
 #include "roster.h"
 #include "student.h"
@@ -30,13 +29,13 @@ int main() {
         "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
         "A5,Toni,Stewart,mste902@wgu.edu,30,2,14,17,SOFTWARE"
     };
-   
+    
     const int totalStudents = 5;
     //2.  Create an instance of the Roster class called classRoster.
     Roster classRoster;
     //3.  Add each student to classRoster.
     classRoster.parseArray(studentData);
-    
+   
     cout << "All students: ";
     cout << endl;
     
@@ -61,19 +60,17 @@ int main() {
     
     cout << "All students: " << endl;
     classRoster.printAll();
+    cout << endl;
     classRoster.removeStudent("A3");
     //expected: the above line should print a message saying such a student with this ID was not found.
     
     //5.  Implement the destructor to release the memory that was allocated dynamically in Roster.
-    cout << endl;
+    
     char exitSign = 'a';
         while (exitSign != 'q') {
-
-
             cout << endl << "enter 'q' to quit...";
             cin >> exitSign;
             cout << endl << endl;
         }
-    
-    return 0;
+     return 0;
 }
