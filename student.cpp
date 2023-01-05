@@ -6,22 +6,17 @@
 /*
  D.  For the Student class, do the following:
     2.  c.  All external access and changes to any instance variables of the Student class must be done using accessor and mutator functions.
- */#include <stdio.h>
+ */
+#include <stdio.h>
 #include <iostream>
-#include <iomanip>
-#include <string>
 #include "student.h"
 #include "degree.h"
 
-using std::string;
-using std::cout;
-using std::endl;
-using std::left;
-using std::setw;
 using namespace std;
 
 //d.  constructor using all of the input parameters provided in the table
-Student::Student() {
+Student::Student()
+{
     this->studentID = "";
     this->firstName = "";
     this->lastName = "";
@@ -39,7 +34,8 @@ Student::Student(std::string studentID,
                  std::string emailAddress,
                  int age,
                  int courseDays[],
-                 DegreeProgram degreeProgram) {
+                 DegreeProgram degreeProgram)
+{
     this->studentID = studentID;
     this->firstName = firstName;
     this->lastName = lastName;
@@ -60,44 +56,28 @@ const int* Student::GetCourseDays() {return this->courseDays;}
 DegreeProgram Student::GetDegreeProgram() {return degreeProgram;}
 
 //b.  a mutator (i.e., setter) for each instance variable from part D1
-void Student::SetStudentID(std::string newStudentID) {this->studentID = newStudentID;}
-void Student::SetFirstName(std::string newFirstName) {this->firstName = newFirstName;}
-void Student::SetLastName(std::string newLastName){this-> lastName = newLastName;}
-void Student::SetEmailAddress(std::string newEmailAddress) {this-> emailAddress = newEmailAddress;}
-void Student::SetAge(int newAge) {this-> age = newAge;}
-void Student::SetCourseDays(const int newCourseDays[]) {
-    for (int i = 0; i < daysArray; i++) this->courseDays[i] = newCourseDays[i];
+void Student::SetStudentID(std::string studentID) {this->studentID = studentID;}
+void Student::SetFirstName(std::string firstName) {this->firstName = firstName;}
+void Student::SetLastName(std::string lastName){this-> lastName = lastName;}
+void Student::SetEmailAddress(std::string emailAddress) {this-> emailAddress = emailAddress;}
+void Student::SetAge(int age) {this-> age = age;}
+void Student::SetCourseDays(const int courseDays[]) {
+    for (int i = 0; i < daysArray; i++) this->courseDays[i] = courseDays[i];
 };
-void Student::SetDegreeProgram(DegreeProgram degreeProgram) {this->degreeProgram = degreeProgram;}
+void Student::SetDegreeProgram(DegreeProgram dProgram) {this->degreeProgram = dProgram;}
 
 //e.  print() to print specific student data
-//-- print header to clearly lable
-void Student::printHeader(){
-    cout << "Student ID  |\t";
-    cout << "First Name  |\t";
-    cout << "Last Name  |\t";
-    cout << "Email Address  |\t";
-    cout << "Age  |\t";
-    cout << "Days in Course  |\t";
-    cout << "Degree Program  |\t" << endl;
+void Student::print(){
+    cout << "| Student ID :\t" << this->studentID << " |" << '\t';
+    cout << "First & Last Name :\t" << this->firstName << '\t';
+    cout << this->lastName << " |" << '\t';
+    cout << "Email Address :\t" << this->emailAddress << " |" << '\t';
+    cout << "Age :\t" << this->age << " |" << '\t';
+    cout << "Days in Course :\t" << this->courseDays[0] << "," << '\t';
+    cout << this->courseDays[1] << "," << '\t';
+    cout << this->courseDays[2] << " |" << '\t';
+    cout << "Degree Program :\t" << degreeProgramString[(int)this->degreeProgram]<< " |" << '\t' << endl;
 };
 
-void Student::print(){
-    std::string degreeProgram = "";
-    if (GetDegreeProgram() == 0) {degreeProgram = "UNDECLARED";}
-    else if (GetDegreeProgram() == 1) {degreeProgram = "SECURITY";}
-    else if (GetDegreeProgram() == 2) {degreeProgram = "NETWORK";}
-    else if (GetDegreeProgram() == 3) {degreeProgram = "SOFTWARE";}
-    
-    cout << this->studentID << " |" << '\t';
-    cout << this->firstName << " |" << '\t';
-    cout << this->lastName << " |" << '\t';
-    cout << this->emailAddress << " |" << '\t';
-    cout << this->age << " |" << '\t';
-    cout << this->courseDays[0] << " |" << '\t';
-    cout << this->courseDays[1] << " |" << '\t';
-    cout << this->courseDays[2] << " |" << '\t';
-    cout << degreeProgram << " |" << '\t' << endl;
-};
 //destructor
 Student::~Student(){};
