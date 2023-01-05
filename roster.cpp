@@ -12,9 +12,6 @@
 #include <iomanip>
 #include <stdio.h>
 #include <vector>
-#include <cstring>
-#include <string.h>
-#include <sstream>
 #include <string>
 #include <regex>
 #include "roster.h"
@@ -26,11 +23,7 @@ const static int totalStudents = 5;
 Student* classRosterArray[totalStudents] = { nullptr, nullptr, nullptr, nullptr, nullptr };
 
 //Constructor
-Roster::Roster() {
-    for (int i = 0; i < totalStudents; ++i) {
-        classRosterArray[i] = new Student();
-    }
-};
+Roster::Roster() {};
 //Destructor
 Roster::~Roster() {
     for (int i = 0; i < totalStudents; i++){
@@ -40,22 +33,31 @@ Roster::~Roster() {
     }
 };
 
-
 Student** Roster::getStudent(){
     return classRosterArray;
 }
 //Parsing using regular expresions.
 void Roster::parseArray(const std::string studentData[]){
     regex regex("\\,");
+    
     for (int i = 0; i < 5; i++) {
         string tempString = studentData[i];
-        std::vector<string> splitter(
+        std::vector<string> studentDataElements(
                                      std::sregex_token_iterator(tempString.begin(), tempString.end(), regex, -1), std::sregex_token_iterator());
-    DegreeProgram degreeProgram = DegreeProgram::UNDECLARED;
-    if (splitter.at(degreeProgram).back() == 'Y') degreeProgram = DegreeProgram::SECURITY;
-    if (splitter.at(degreeProgram).back() == 'K') degreeProgram = DegreeProgram::NETWORK;
-    if (splitter.at(degreeProgram).back() == 'E') degreeProgram = DegreeProgram::SOFTWARE;
-    add(splitter.at(0), splitter.at(1), splitter.at(2), splitter.at(3), stoi(splitter.at(4)), stoi(splitter.at(5)), stoi(splitter.at(6)), stoi(splitter.at(7)), degreeProgram);
+        DegreeProgram dp = DegreeProgram::UNDECLARED;
+            if (studentDataElements.at(8).back() == 'Y') dp = DegreeProgram::SECURITY;
+            if (studentDataElements.at(8).back() == 'K') dp = DegreeProgram::NETWORK;
+            if (studentDataElements.at(8).back() == 'E') dp = DegreeProgram::SOFTWARE;
+            add(studentDataElements.at(0),
+                studentDataElements.at(1),
+                studentDataElements.at(2),
+                studentDataElements.at(3),
+                stoi(studentDataElements.at(4)),
+                stoi(studentDataElements.at(5)),
+                stoi(studentDataElements.at(6)),
+                stoi(studentDataElements.at(7)),
+                dp);
+    }
 };
 
 //a.  public void add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeprogram)
@@ -68,24 +70,16 @@ void Roster::add(std::string studentID,
                  int courseDays2,
                  int courseDays3,
                  DegreeProgram degreeProgram){
-    
-    int courseDays[Student::daysArray]{courseDays1, courseDays2, courseDays3};
-    
-    classRosterArray[++studentIndex] = new Student(studentID, firstName, lastName, emailAddress, age, courseDays, degreeProgram);
-    
-//     for (int i = 0; i <= Roster::studentIndex; i++) {
-//         if (classRosterArray[i] == nullptr) {
-//             classRosterArray[i] = new Student(studentID, firstName, lastName, emailAddress, age, courseDays, degreeProgram);
-//             break;
-//         }
-//     }
+        int courseDays[Student::daysArray]{courseDays1, courseDays2, courseDays3};
+        classRosterArray[++studentIndex] = new Student(studentID, firstName, lastName, emailAddress, age, courseDays, degreeProgram);
+
 };
 //c. public void printAll() that prints a complete tab-separated list of student data
 void Roster::printAll() {
     /*Header for each student*/
-    Student::printHeader();
+    //Student::printHeader();
     for (int i = 0; i <= Roster::studentIndex; i++) {
-         if (classRosterArray[i] == nullptr){}
+        if (classRosterArray[i] == nullptr){}
         else { classRosterArray[i]->print();
         }
     }
@@ -96,8 +90,8 @@ void Roster::printInvalidEmails() {
     bool ALL = false;
     /*checks each email against '@',' ','.'*/
     for (int i = 0; i <= Roster::studentIndex; i++) {
-        string emailAddress = (classRosterArray[i]->GetEmailAddress());
-        if (emailAddress.find('@') != string::npos || (emailAddress.find(' ') != string::npos && emailAddress.find('.') != string::npos)) {
+        std::string emailAddress = (classRosterArray[i]->GetEmailAddress());
+        if (emailAddress.find('@') != string::npos || (emailAddress.find(' ') != string::npos || emailAddress.find('.') != string::npos)) {
             ALL = true;
             /*prints each email*/
             cout << emailAddress << endl;
@@ -121,7 +115,6 @@ void Roster::printAverageDaysInCourse(string studentID) {
 };
 //f.  public void printByDegreeProgram(DegreeProgram degreeProgram)
 void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
-    Student::printHeader();
     for (int i = 0; i <= Roster::studentIndex; i++) {
         if (Roster::classRosterArray[i]->GetDegreeProgram() == degreeProgram) classRosterArray[i]->print();
     }
@@ -148,4 +141,3 @@ void Roster::removeStudent(string studentID) {
     }
     else cout << studentID << " not found in roster." << endl << endl;
 };
-
