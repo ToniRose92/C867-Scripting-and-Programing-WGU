@@ -12,4 +12,5 @@ REQUIREMENTS
 
 My output:
 
-<img width="1461" alt="Screenshot 2023-01-05 at 5 13 39 AM" src="https://user-images.githubusercontent.com/111329424/210768633-f24b9640-5b43-4704-9308-07d6aa64e9a5.png">
+<img width="1421" alt="Screenshot 2023-01-05 at 4 39 08 PM" src="https://user-images.githubusercontent.com/111329424/210893857-95b13ca7-1193-4325-b0aa-d16c9f44afef.png">
+
