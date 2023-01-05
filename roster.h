@@ -11,9 +11,6 @@
 #define roster_h
 #include <stdio.h>
 #include <vector>
-#include <cstring>
-#include <string.h>
-#include <sstream>
 #include <string>
 #include "student.h"
 
@@ -26,13 +23,10 @@ class Roster{
 public:
     //Constructors
     Roster();
-    
     //Destructor
     ~Roster();
-    
     Student** getStudent();
-    
-    //Uses the data from studentData and adds it to the classRoster as an object
+     //Uses the data from studentData and adds it to the classRoster as an object
     void parseArray(const std::string studentData[]);
     
     //a.  public void add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeprogram)  that sets the instance variables from part D1 and updates the roster.
@@ -56,12 +50,11 @@ public:
     //b.  public void remove(string studentID)
     void removeStudent(string studentID);
     
-    //2.  Create a student object for each student in the data table and populate classRosterArray.
     const static int totalStudents = 5;
+    //1.  Create an array of pointers, classRosterArray, to hold the data provided in the “studentData Table.”
     Student* classRosterArray[totalStudents] = { nullptr, nullptr, nullptr, nullptr, nullptr };
+
 private:
     int studentIndex = -1;
-    //1.  Create an array of pointers, classRosterArray, to hold the data provided in the “studentData Table.”
-    
 };
 #endif /* roster_h */
